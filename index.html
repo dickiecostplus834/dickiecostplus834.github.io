@@ -4,189 +4,339 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>CHERRY CLUB — 매거진</title>
-<meta name="description" content="지금 잘 나가는 것만 골라주는 쇼핑 매거진. @cherry.clubs2">
+<meta name="description" content="CUTE IS THE RULE. 지금 잘 나가는 것만 골라주는 쇼핑 매거진.">
+<meta property="og:title" content="CHERRY CLUB — 매거진">
+<meta property="og:description" content="CUTE IS THE RULE. 데일리룩 · 트렌드 큐레이션">
+<meta property="og:image" content="logo.png">
+<meta name="theme-color" content="#F06BA0">
 <link rel="icon" href="logo.png">
 <style>
   :root{
-    --pink:#F06BA0; --pink-d:#D9457F; --pink-l:#FFE3EF;
-    --ink:#4A2338; --ink-2:#8A6478; --line:#F6D6E4;
-    --bg1:#FFF7FB; --bg2:#FDE9F2;
+    --hot:#F06BA0; --rose:#D96E9A; --soft:#F2A7C3; --mist:#FBDCE8;
+    --ink:#5C2A44; --deep:#3B1229; --muted:#9B7288;
   }
-  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
   body{
-    margin:0; padding:28px 18px 56px;
-    font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR",system-ui,sans-serif;
-    color:var(--ink);
-    background:linear-gradient(180deg,var(--bg1) 0%, var(--bg2) 100%);
-    background-attachment:fixed;
-    -webkit-font-smoothing:antialiased;
+    font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR",system-ui,-apple-system,sans-serif;
+    background:
+      radial-gradient(1200px 600px at 50% -10%, #FBDCE8 0%, transparent 60%),
+      linear-gradient(180deg,#FFF6FA 0%,#FDEAF2 100%);
+    color:var(--ink); min-height:100vh;
+    display:flex; justify-content:center;
+    padding:30px 18px calc(44px + env(safe-area-inset-bottom));
   }
-  .wrap{max-width:480px;margin:0 auto}
+  .wrap{width:100%;max-width:460px}
 
-  /* ── 헤더 ── */
-  .logo{width:88px;height:88px;border-radius:50%;display:block;margin:0 auto 14px;
-        object-fit:cover;box-shadow:0 8px 24px rgba(240,107,160,.28)}
-  h1{margin:0;text-align:center;font-size:21px;letter-spacing:-.4px}
-  .tag{margin:6px 0 0;text-align:center;font-size:10.5px;font-weight:800;
-       letter-spacing:2.4px;color:var(--pink)}
-  .desc{margin:12px 0 0;text-align:center;font-size:13.5px;line-height:1.7;color:var(--ink-2)}
-  .ig{display:block;width:fit-content;margin:16px auto 0;font-size:12.5px;font-weight:700;
-      color:var(--pink-d);text-decoration:none;border-bottom:1.5px solid var(--pink-l);padding-bottom:2px}
+  /* 헤더 */
+  header{text-align:center;margin-bottom:18px}
+  .logo{width:96px;height:96px;border-radius:50%;display:block;margin:0 auto 12px;
+    box-shadow:0 8px 28px rgba(240,107,160,.35), 0 0 0 4px #fff}
+  .handle{font-size:19px;font-weight:800;letter-spacing:-.02em}
+  .tag{margin-top:6px;font-size:11px;font-weight:800;letter-spacing:.18em;color:var(--hot)}
+  .desc{margin-top:9px;font-size:13.5px;line-height:1.55;color:var(--muted)}
+  .social{display:flex;justify-content:center;gap:9px;margin-top:13px}
+  .social a{width:38px;height:38px;border-radius:50%;background:#fff;border:1.5px solid var(--mist);
+    display:grid;place-items:center;font-size:16px;text-decoration:none;
+    box-shadow:0 2px 8px rgba(92,42,68,.06);transition:transform .12s,border-color .12s}
+  .social a:active{transform:scale(.92)}
 
-  /* ── DM 배너 ── */
-  .dm{display:flex;align-items:center;gap:12px;margin:24px 0 22px;padding:15px 18px;
-      border-radius:16px;text-decoration:none;color:#fff;
-      background:linear-gradient(105deg,var(--pink) 0%, #FF9BC4 100%);
-      box-shadow:0 6px 18px rgba(240,107,160,.30)}
-  .dm b{display:block;font-size:14.5px}
-  .dm span{display:block;font-size:11.5px;opacity:.92;margin-top:2px}
-  .dm .arw{margin-left:auto;font-size:17px;opacity:.85}
+  .notice{margin-top:16px;border-radius:14px;padding:12px 14px;font-size:13px;line-height:1.5;
+    background:linear-gradient(135deg,var(--hot),var(--rose));color:#fff;
+    box-shadow:0 6px 18px rgba(240,107,160,.3)}
 
-  /* ── 탭 ── */
-  .tabs{display:flex;gap:7px;margin-bottom:20px}
-  .tab{flex:1;padding:9px 0;border:none;border-radius:999px;cursor:pointer;
-       font-family:inherit;font-size:12.5px;font-weight:700;color:var(--ink-2);
-       background:#fff;box-shadow:0 1px 5px rgba(200,120,160,.10);transition:.15s}
-  .tab.on{background:var(--pink);color:#fff;box-shadow:0 4px 12px rgba(240,107,160,.32)}
+  /* DM 고정 버튼 */
+  a.dm{display:flex;align-items:center;gap:12px;margin-top:16px;
+    background:linear-gradient(135deg,var(--hot),var(--rose));border-radius:16px;
+    padding:14px 16px;text-decoration:none;color:#fff;
+    box-shadow:0 8px 22px rgba(240,107,160,.38)}
+  a.dm .ic{flex:0 0 36px;height:36px;border-radius:10px;background:rgba(255,255,255,.22);
+    display:grid;place-items:center;font-size:16px}
+  a.dm b{display:block;font-size:14.5px;font-weight:800}
+  a.dm span{display:block;font-size:11.5px;color:rgba(255,255,255,.88);margin-top:2px}
 
-  /* ── 호 리스트 (최신이 위) ── */
-  .issues{display:flex;flex-direction:column;gap:11px}
-  .issue{background:#fff;border-radius:16px;overflow:hidden;
-         box-shadow:0 2px 10px rgba(200,120,160,.10);transition:box-shadow .18s}
-  .issue.open{box-shadow:0 8px 24px rgba(240,107,160,.20)}
+  /* 탭 */
+  .tabs{display:flex;gap:7px;margin:24px 0 16px}
+  .tabs button{
+    flex:1;border:1.5px solid var(--mist);background:#fff;color:var(--muted);
+    border-radius:999px;padding:9px 0;font-size:12.5px;font-weight:700;cursor:pointer;
+    font-family:inherit;transition:all .15s;
+  }
+  .tabs button.on{
+    background:linear-gradient(135deg,var(--hot),var(--rose));color:#fff;border-color:transparent;
+    box-shadow:0 4px 14px rgba(240,107,160,.32);
+  }
 
-  .ihead{display:flex;align-items:center;gap:12px;padding:16px 17px;cursor:pointer;user-select:none}
-  .no{flex:none;min-width:44px;font-size:15px;font-weight:900;color:var(--pink);
-      letter-spacing:-.3px;font-variant-numeric:tabular-nums}
-  .itxt{flex:1;min-width:0}
-  .ittl{font-size:14.5px;font-weight:700;line-height:1.4;letter-spacing:-.3px;
-        white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .imeta{margin-top:3px;font-size:11px;color:var(--ink-2)}
-  .imeta em{font-style:normal;color:var(--pink-d);font-weight:700}
-  .chev{flex:none;font-size:11px;color:var(--pink);transition:transform .2s}
-  .issue.open .chev{transform:rotate(180deg)}
+  .sec-h{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:800;
+    letter-spacing:.04em;color:var(--ink);margin:26px 4px 11px}
+  .sec-h .bar{flex:1;height:1px;background:linear-gradient(90deg,var(--soft),transparent)}
+  .sec-h .cnt{font-size:10px;font-weight:700;color:var(--rose);
+    background:rgba(240,107,160,.12);padding:2px 7px;border-radius:999px}
 
-  .ibody{display:none;padding:0 17px 15px}
-  .issue.open .ibody{display:block}
+  /* 최신호 — 대형 카드 */
+  .feature{
+    background:#fff;border:1.5px solid var(--mist);border-radius:20px;overflow:hidden;
+    box-shadow:0 8px 26px rgba(92,42,68,.08);
+  }
+  .feature .cover{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;background:var(--mist)}
+  .feature .body{padding:15px 16px 16px}
 
-  /* ── 아이템 ── */
-  .item{display:flex;align-items:center;gap:10px;padding:11px 12px;margin-top:7px;
-        border-radius:11px;background:#FFF6FA;text-decoration:none;color:var(--ink);
-        border:1px solid transparent;transition:.15s}
-  a.item:hover{background:var(--pink-l);border-color:var(--line)}
-  .idx{flex:none;width:19px;font-size:11px;font-weight:900;color:var(--pink);
-       font-variant-numeric:tabular-nums;opacity:.75}
-  .iname{flex:1;min-width:0;font-size:13px;line-height:1.45;letter-spacing:-.2px}
-  .go{flex:none;font-size:11px;font-weight:800;color:var(--pink-d);white-space:nowrap}
-  .item.soon{opacity:.62;cursor:default}
-  .item.soon .go{color:var(--ink-2);font-weight:600}
+  /* 지난 호 — 리스트 */
+  .issue{
+    background:#fff;border:1.5px solid var(--mist);border-radius:16px;overflow:hidden;
+    margin-bottom:10px;box-shadow:0 2px 10px rgba(92,42,68,.05);
+  }
+  .issue .row{display:flex;gap:12px;padding:11px;align-items:center;cursor:pointer}
+  .issue .row:active{background:#FFF6FA}
+  .issue .th{flex:0 0 60px;width:60px;height:75px;border-radius:10px;object-fit:cover;
+    background:var(--mist);display:block}
 
-  .post{display:block;margin-top:11px;padding:9px 0;text-align:center;border-radius:10px;
-        font-size:11.5px;font-weight:700;text-decoration:none;
-        color:var(--pink-d);background:var(--pink-l)}
+  .meta{font-size:10.5px;font-weight:700;color:var(--rose);letter-spacing:.02em}
+  .ttl{font-size:14px;font-weight:800;line-height:1.35;margin-top:3px;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .sub{font-size:11.5px;color:var(--muted);margin-top:4px}
+  .chev{margin-left:auto;color:var(--soft);font-size:15px;transition:transform .2s}
+  .open .chev{transform:rotate(90deg)}
 
-  .empty{padding:44px 20px;text-align:center;font-size:13px;color:var(--ink-2);
-         background:#fff;border-radius:16px}
+  /* 상품 목록 (펼침) */
+  .prods{display:none;border-top:1.5px dashed var(--mist);padding:11px 13px 13px}
+  .open .prods{display:block}
+  a.prod{
+    display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:12px;
+    text-decoration:none;color:var(--ink);background:#FFF6FA;margin-bottom:7px;
+    border:1px solid transparent;transition:border-color .12s,transform .12s;
+  }
+  a.prod:active{transform:scale(.985)}
+  a.prod .n{flex:0 0 20px;height:20px;border-radius:6px;background:var(--hot);color:#fff;
+    font-size:10.5px;font-weight:800;display:grid;place-items:center}
+  a.prod .pn{flex:1;font-size:12.5px;font-weight:600;line-height:1.35}
+  a.prod .go{font-size:11px;font-weight:800;color:var(--hot);white-space:nowrap}
+  .prod.dead{background:#fff;border:1px dashed var(--mist);color:#B08CA0}
+  .prod.dead .n{background:var(--mist);color:var(--muted)}
+  .prod.dead .go{color:#C9A5B6}
 
-  /* ── 푸터 ── */
-  footer{margin-top:30px;text-align:center}
-  .disc{display:inline-block;padding:6px 13px;border-radius:999px;background:var(--pink-l);
-        font-size:10.5px;font-weight:700;color:var(--pink-d)}
-  .fine{margin:9px 0 0;font-size:10.5px;line-height:1.7;color:var(--ink-2);opacity:.85}
+  a.post{
+    display:block;text-align:center;margin-top:8px;padding:9px;border-radius:12px;
+    background:#fff;border:1.5px solid var(--mist);text-decoration:none;
+    font-size:12px;font-weight:700;color:var(--rose);
+  }
+
+  .empty{border:1.5px dashed var(--mist);border-radius:16px;padding:16px;
+    font-size:12.5px;color:#B08CA0;background:rgba(255,255,255,.5);text-align:center}
+
+  /* 검색 */
+  .search{position:relative;margin:12px 0 2px}
+  .search input{
+    width:100%;border:1.5px solid var(--mist);background:#fff;border-radius:999px;
+    padding:11px 38px 11px 38px;font-size:13px;font-family:inherit;color:var(--ink);
+    box-shadow:0 2px 10px rgba(92,42,68,.05);outline:none;transition:border-color .15s,box-shadow .15s}
+  .search input:focus{border-color:var(--soft);box-shadow:0 4px 16px rgba(240,107,160,.18)}
+  .search input::placeholder{color:#C9A5B6}
+  .search .mag{position:absolute;left:14px;top:50%;transform:translateY(-50%);
+    font-size:13px;color:var(--soft);pointer-events:none}
+  .search .clr{position:absolute;right:8px;top:50%;transform:translateY(-50%);
+    width:24px;height:24px;border:none;border-radius:50%;background:var(--mist);color:var(--rose);
+    font-size:13px;font-weight:800;cursor:pointer;display:none;line-height:1;font-family:inherit}
+  .search.has .clr{display:block}
+  .hits{margin:10px 4px 0;font-size:11.5px;font-weight:700;color:var(--rose)}
+  mark{background:rgba(240,107,160,.22);color:var(--deep);border-radius:4px;padding:0 2px;font-weight:800}
+
+  footer{margin-top:34px;text-align:center;font-size:10.5px;line-height:1.7;color:#B08CA0}
+  footer .ad{display:inline-block;margin-bottom:8px;padding:5px 10px;border-radius:999px;
+    background:rgba(240,107,160,.1);color:var(--rose);font-weight:700;font-size:10px}
 </style>
 </head>
 <body>
 <div class="wrap">
 
-  <img class="logo" src="logo.png" alt="CHERRY CLUB">
-  <h1>@cherry.clubs2</h1>
-  <p class="tag">CUTE IS THE RULE</p>
-  <p class="desc">지금 잘 나가는 것만 골라주는 쇼핑 매거진.<br>살까 말까 하는 고민을 줄여드려요.</p>
-  <a class="ig" id="ig" href="#" target="_blank" rel="noopener">인스타그램 보러가기 →</a>
+  <header>
+    <img class="logo" src="logo.png" alt="CHERRY CLUB">
+    <div class="handle">@cherry.clubs2</div>
+    <div class="tag">CUTE IS THE RULE</div>
+    <p class="desc">지금 잘 나가는 것만 골라주는 쇼핑 매거진.<br>살까 말까 하는 고민을 줄여드려요.</p>
+    <nav class="social" id="social"></nav>
+  </header>
+
+  <div id="notice"></div>
 
   <a class="dm" href="https://ig.me/m/cherry.clubs2" target="_blank" rel="noopener">
-    <div><b>찾는 아이템 있으세요?</b><span>DM 주시면 대신 골라드려요</span></div>
-    <div class="arw">›</div>
+    <span class="ic">💌</span>
+    <span><b>찾는 아이템 있으세요?</b><span>DM 주시면 대신 골라드려요</span></span>
   </a>
 
-  <div class="tabs">
-    <button class="tab on" data-c="all">전체</button>
-    <button class="tab" data-c="fashion">👗 패션</button>
-    <button class="tab" data-c="beauty">💄 뷰티</button>
+  <div class="tabs" id="tabs">
+    <button data-c="all" class="on">전체</button>
+    <button data-c="fashion">👗 패션</button>
+    <button data-c="beauty">💄 뷰티</button>
   </div>
 
-  <div class="issues" id="list"></div>
+  <div class="search" id="search">
+    <span class="mag">🔍</span>
+    <input id="q" type="search" autocomplete="off"
+           placeholder="브랜드 · 아이템 · 호수로 찾기 (예: 레인부츠)">
+    <button class="clr" id="clr" aria-label="지우기">✕</button>
+  </div>
+  <div class="hits" id="hits"></div>
+
+  <main id="app"></main>
 
   <footer>
-    <span class="disc">일부 링크는 제휴 링크입니다</span>
-    <p class="fine">구매 시 수수료를 받을 수 있으며, 가격은 동일합니다.<br>© CHERRY CLUB</p>
+    <span class="ad">일부 링크는 제휴 링크입니다</span><br>
+    구매 시 수수료를 받을 수 있으며, 가격은 동일합니다.<br>
+    © CHERRY CLUB
   </footer>
+
 </div>
 
 <script>
 const TRACK = "https://peppy-duck-1231.navlafilm-sys.deno.net/c";
-const CAT   = { fashion:"👗 패션", beauty:"💄 뷰티" };
-let ISSUES = [], cur = "all";
+const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const track = (id, url) => `${TRACK}?id=${encodeURIComponent(id)}&u=${encodeURIComponent(url)}`;
 
-const esc = s => (s||"").replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const track = (id, url) => TRACK + "?id=" + encodeURIComponent(id) + "&u=" + encodeURIComponent(url);
+let DATA = { issues: [] };
+let CAT = "all";
+let Q = "";
 
-function render(){
-  const list = document.getElementById("list");
-  const rows = ISSUES.filter(i => cur === "all" || i.cat === cur);
+const norm = s => String(s ?? "").toLowerCase().replace(/\s+/g, "");
+const hi = s => {
+  const t = esc(s);
+  if (!Q) return t;
+  // 공백 무시 매칭이라 원문 기준으로 다시 찾음
+  const i = norm(s).indexOf(norm(Q));
+  if (i < 0) return t;
+  const re = new RegExp(Q.trim().split("").map(c =>
+    c.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("\\s*"), "i");
+  return t.replace(re, m => `<mark>${m}</mark>`);
+};
+const matchIssue = i =>
+  !Q || norm(i.title).includes(norm(Q)) || norm(i.no + "호").includes(norm(Q)) ||
+  (i.items || []).some(p => norm(p.name).includes(norm(Q)));
 
-  if(!rows.length){
-    list.innerHTML = '<div class="empty">곧 새로운 호가 올라와요 🍒</div>';
-    return;
+function prodList(iss){
+  let items = iss.items || [];
+  if (Q) {
+    const hit = items.filter(p => norm(p.name).includes(norm(Q)));
+    if (hit.length) items = hit;   // 아이템이 걸리면 그것만 보여줌
   }
-
-  list.innerHTML = rows.map((is, n) => {
-    const items = (is.items || []).map((it, k) => {
-      const idx = String(k + 1).padStart(2, "0");
-      if(!it.url){
-        return '<div class="item soon"><span class="idx">' + idx + '</span>'
-             + '<span class="iname">' + esc(it.name) + '</span>'
-             + '<span class="go">준비중</span></div>';
-      }
-      const href = track(is.no + "-" + (k + 1), it.url);
-      return '<a class="item" href="' + esc(href) + '" target="_blank" rel="noopener sponsored">'
-           + '<span class="idx">' + idx + '</span>'
-           + '<span class="iname">' + esc(it.name) + '</span>'
-           + '<span class="go">보러가기 ›</span></a>';
-    }).join("");
-
-    const post = is.permalink
-      ? '<a class="post" href="' + esc(track(is.no + "-post", is.permalink)) + '" target="_blank" rel="noopener">📷 인스타에서 이 호 보기</a>'
-      : "";
-
-    return '<div class="issue' + (n === 0 ? " open" : "") + '">'
-      + '<div class="ihead" onclick="this.parentNode.classList.toggle(\'open\')">'
-        + '<div class="no">' + esc(is.no) + '호</div>'
-        + '<div class="itxt">'
-          + '<div class="ittl">' + esc(is.title) + '</div>'
-          + '<div class="imeta"><em>' + (CAT[is.cat] || "") + '</em> · 상품 '
-          + (is.items || []).length + '개 · ' + esc(is.date) + '</div>'
-        + '</div>'
-        + '<div class="chev">▼</div>'
-      + '</div>'
-      + '<div class="ibody">' + (items || '<div class="item soon"><span class="iname">상품 정리 중이에요</span></div>') + post + '</div>'
-    + '</div>';
+  if (!items.length) return `<div class="empty" style="padding:12px;font-size:12px">상품 링크 준비 중이에요 🍒</div>`;
+  const base = iss.items || [];
+  return items.map((p) => {
+    const n = String(base.indexOf(p) + 1).padStart(2, "0");
+    if (!p.url) {
+      return `<div class="prod dead">
+        <span class="n">${n}</span>
+        <span class="pn">${hi(p.name)}</span>
+        <span class="go">준비중</span>
+      </div>`;
+    }
+    return `<a class="prod" href="${esc(track(iss.no + ":" + p.name, p.url))}" target="_blank" rel="noopener nofollow sponsored">
+      <span class="n">${n}</span>
+      <span class="pn">${hi(p.name)}</span>
+      <span class="go">보러가기 ›</span>
+    </a>`;
   }).join("");
 }
 
-document.querySelectorAll(".tab").forEach(b => b.onclick = () => {
-  document.querySelectorAll(".tab").forEach(x => x.classList.remove("on"));
+function issueCard(iss, feature){
+  const cover = iss.cover ? `<img class="${feature ? "cover" : "th"}" src="${esc(iss.cover)}" alt="">`
+                          : `<div class="${feature ? "cover" : "th"}"></div>`;
+  const cnt = (iss.items || []).length;
+  const live = (iss.items || []).filter(p => p.url).length;
+  const sub = `상품 ${cnt}${live ? " · 링크 " + live : ""} · ${esc(iss.date || "")}`;
+  const post = iss.permalink
+    ? `<a class="post" href="${esc(track(iss.no + ":post", iss.permalink))}" target="_blank" rel="noopener">📷 인스타에서 이 호 보기</a>` : "";
+
+  if (feature) {
+    return `<article class="feature" data-c="${esc(iss.cat)}">
+      ${cover}
+      <div class="body">
+        <div class="meta">${esc(iss.no)}호 · ${iss.cat === "beauty" ? "💄 뷰티" : "👗 패션"}</div>
+        <div class="ttl">${hi(iss.title)}</div>
+        <div class="sub">${sub}</div>
+      </div>
+      <div class="prods" style="display:block">
+        ${prodList(iss)}
+        ${post}
+      </div>
+    </article>`;
+  }
+  return `<article class="issue${Q ? " open" : ""}" data-c="${esc(iss.cat)}">
+    <div class="row" onclick="this.parentNode.classList.toggle('open')">
+      ${cover}
+      <div>
+        <div class="meta">${esc(iss.no)}호 · ${iss.cat === "beauty" ? "💄 뷰티" : "👗 패션"}</div>
+        <div class="ttl">${hi(iss.title)}</div>
+        <div class="sub">${sub}</div>
+      </div>
+      <span class="chev">›</span>
+    </div>
+    <div class="prods">
+      ${prodList(iss)}
+      ${post}
+    </div>
+  </article>`;
+}
+
+function render(){
+  const app  = document.getElementById("app");
+  const hits = document.getElementById("hits");
+  const byCat = (DATA.issues || []).filter(i => CAT === "all" || i.cat === CAT);
+  const all = byCat.filter(matchIssue);
+
+  document.getElementById("search").classList.toggle("has", !!Q);
+
+  // 검색 중 — 최신호 카드 없이 결과 리스트만
+  if (Q) {
+    const n = all.reduce((s, i) =>
+      s + (i.items || []).filter(p => norm(p.name).includes(norm(Q))).length, 0);
+    hits.textContent = all.length
+      ? `“${Q}” — ${all.length}개 호${n ? ` · 아이템 ${n}개` : ""}`
+      : "";
+    app.innerHTML = all.length
+      ? all.map(i => issueCard(i, false)).join("")
+      : `<div class="empty">“${esc(Q)}” 결과가 없어요 🍒<br>DM 주시면 대신 찾아드릴게요.</div>`;
+    return;
+  }
+
+  hits.textContent = "";
+  if (!all.length) {
+    app.innerHTML = `<div class="empty">아직 발행된 호가 없어요 🍒<br>곧 올라옵니다.</div>`;
+    return;
+  }
+  const [latest, ...rest] = all;
+  let h = `<div class="sec-h"><span>📕 최신호</span><i class="bar"></i></div>` + issueCard(latest, true);
+  if (rest.length) {
+    h += `<div class="sec-h"><span>📚 지난 호</span><i class="cnt">${rest.length}</i><i class="bar"></i></div>`;
+    h += rest.map(i => issueCard(i, false)).join("");
+  }
+  app.innerHTML = h;
+}
+
+document.getElementById("tabs").addEventListener("click", e => {
+  const b = e.target.closest("button");
+  if (!b) return;
+  document.querySelectorAll("#tabs button").forEach(x => x.classList.remove("on"));
   b.classList.add("on");
-  cur = b.dataset.c;
+  CAT = b.dataset.c;
   render();
 });
 
-fetch("links.json?t=" + Date.now())
+const qEl = document.getElementById("q");
+let t = null;
+qEl.addEventListener("input", () => {
+  clearTimeout(t);
+  t = setTimeout(() => { Q = qEl.value.trim(); render(); }, 120);
+});
+document.getElementById("clr").addEventListener("click", () => {
+  qEl.value = ""; Q = ""; render(); qEl.focus();
+});
+
+fetch("links.json?v=" + Date.now())
   .then(r => r.json())
   .then(d => {
-    ISSUES = (d.issues || []).sort((a, b) => (b.no || "").localeCompare(a.no || ""));
-    const ig = (d.social || []).find(s => s.label === "instagram");
-    if(ig) document.getElementById("ig").href = ig.url;
+    DATA = d;
+    document.getElementById("social").innerHTML = (d.social || []).map(s =>
+      `<a href="${esc(track('social:'+s.label, s.url))}" target="_blank" rel="noopener">${esc(s.icon)}</a>`).join("");
+    document.getElementById("notice").innerHTML = d.notice ? `<div class="notice">${esc(d.notice)}</div>` : "";
     render();
   })
   .catch(() => render());
