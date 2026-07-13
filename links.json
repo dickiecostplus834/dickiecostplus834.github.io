@@ -1,0 +1,30 @@
+{
+  "_사용법": "url 만 채우면 버튼/카드가 생깁니다. url이 비면 placeholder 문구가 보입니다. layout:'card' 는 제품카드 그리드(썸네일+브랜드+가격), 없으면 버튼 리스트. icon: zigzag/oliveyoung/naver/pick/post/link",
+  "updated": "2026-07-13",
+  "notice": "",
+  "social": [
+    { "label": "instagram", "icon": "📷", "url": "https://www.instagram.com/cherry.clubs2/" }
+  ],
+  "sections": [
+    {
+      "title": "이번 주 픽",
+      "emoji": "🍒",
+      "layout": "card",
+      "placeholder": "이번 주 픽은 곧 공개돼요 🍒",
+      "items": []
+    },
+    {
+      "title": "지난 호 보기",
+      "emoji": "📖",
+      "placeholder": "첫 호가 곧 올라와요",
+      "items": []
+    },
+    {
+      "title": "뷰티 픽",
+      "emoji": "💄",
+      "layout": "card",
+      "placeholder": "뷰티 픽 준비 중이에요",
+      "items": []
+    }
+  ]
+}
