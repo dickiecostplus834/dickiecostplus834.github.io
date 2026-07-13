@@ -1,43 +1,30 @@
 {
+  "_사용법": "url 만 채우면 버튼/카드가 생깁니다. url이 비면 placeholder 문구가 보입니다. layout:'card' 는 제품카드 그리드(썸네일+브랜드+가격), 없으면 버튼 리스트. icon: zigzag/oliveyoung/naver/pick/post/link",
   "updated": "2026-07-13",
   "notice": "",
   "social": [
-    {
-      "label": "instagram",
-      "icon": "📷",
-      "url": "https://www.instagram.com/cherry.clubs2/"
-    }
+    { "label": "instagram", "icon": "📷", "url": "https://www.instagram.com/cherry.clubs2/" }
   ],
-  "issues": [
+  "sections": [
     {
-      "no": "001",
-      "title": "장마 시작이에요 🍒",
-      "date": "2026-07-12",
-      "cat": "fashion",
-      "permalink": "https://www.instagram.com/p/DasGHrwHe_V/",
-      "cover": "covers/001.png",
-      "items": [
-        {
-          "name": "누아트스튜디오 · 천연고무 클래식 미드 숏 레인부츠",
-          "url": ""
-        },
-        {
-          "name": "엘리자베스 스튜어트 · 네트 젤리 샌들",
-          "url": ""
-        },
-        {
-          "name": "엘리자베스 스튜어트 · 썸머 웨지 쪼리 플립플랍",
-          "url": ""
-        },
-        {
-          "name": "코모레비뮤지엄 · 젤리 플래닛 라티스 플랫",
-          "url": ""
-        },
-        {
-          "name": "기라로쉬 · 헬로키티 도트 완전자동 우산",
-          "url": ""
-        }
-      ]
+      "title": "이번 주 픽",
+      "emoji": "🍒",
+      "layout": "card",
+      "placeholder": "이번 주 픽은 곧 공개돼요 🍒",
+      "items": []
+    },
+    {
+      "title": "지난 호 보기",
+      "emoji": "📖",
+      "placeholder": "첫 호가 곧 올라와요",
+      "items": []
+    },
+    {
+      "title": "뷰티 픽",
+      "emoji": "💄",
+      "layout": "card",
+      "placeholder": "뷰티 픽 준비 중이에요",
+      "items": []
     }
   ]
 }
