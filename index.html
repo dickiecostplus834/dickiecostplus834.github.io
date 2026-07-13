@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>CHERRY CLUB — 오늘의 픽</title>
+<title>CHERRY CLUB — 매거진</title>
 <meta name="description" content="CUTE IS THE RULE. 지금 잘 나가는 것만 골라주는 쇼핑 매거진.">
-<meta property="og:title" content="CHERRY CLUB — 오늘의 픽">
+<meta property="og:title" content="CHERRY CLUB — 매거진">
 <meta property="og:description" content="CUTE IS THE RULE. 데일리룩 · 트렌드 큐레이션">
 <meta property="og:image" content="logo.png">
 <meta name="theme-color" content="#F06BA0">
@@ -27,107 +27,105 @@
   }
   .wrap{width:100%;max-width:460px}
 
-  /* ── 헤더 ── */
-  header{text-align:center;margin-bottom:20px}
-  .logo{
-    width:100px;height:100px;border-radius:50%;display:block;margin:0 auto 13px;
-    box-shadow:0 8px 28px rgba(240,107,160,.35), 0 0 0 4px #fff;
-  }
+  /* 헤더 */
+  header{text-align:center;margin-bottom:18px}
+  .logo{width:96px;height:96px;border-radius:50%;display:block;margin:0 auto 12px;
+    box-shadow:0 8px 28px rgba(240,107,160,.35), 0 0 0 4px #fff}
   .handle{font-size:19px;font-weight:800;letter-spacing:-.02em}
   .tag{margin-top:6px;font-size:11px;font-weight:800;letter-spacing:.18em;color:var(--hot)}
   .desc{margin-top:9px;font-size:13.5px;line-height:1.55;color:var(--muted)}
-
-  /* ── 소셜 아이콘 바 ── */
-  .social{display:flex;justify-content:center;gap:9px;margin-top:14px}
-  .social a{
-    width:38px;height:38px;border-radius:50%;background:#fff;border:1.5px solid var(--mist);
+  .social{display:flex;justify-content:center;gap:9px;margin-top:13px}
+  .social a{width:38px;height:38px;border-radius:50%;background:#fff;border:1.5px solid var(--mist);
     display:grid;place-items:center;font-size:16px;text-decoration:none;
-    box-shadow:0 2px 8px rgba(92,42,68,.06);transition:transform .12s,border-color .12s;
-  }
+    box-shadow:0 2px 8px rgba(92,42,68,.06);transition:transform .12s,border-color .12s}
   .social a:active{transform:scale(.92)}
-  @media(hover:hover){.social a:hover{border-color:var(--soft);transform:translateY(-2px)}}
 
-  /* ── 공지 배너 ── */
-  .notice{
-    margin-top:18px;border-radius:14px;padding:12px 14px;font-size:13px;line-height:1.5;
+  .notice{margin-top:16px;border-radius:14px;padding:12px 14px;font-size:13px;line-height:1.5;
     background:linear-gradient(135deg,var(--hot),var(--rose));color:#fff;
-    box-shadow:0 6px 18px rgba(240,107,160,.3);
-  }
-  .notice b{font-weight:800}
+    box-shadow:0 6px 18px rgba(240,107,160,.3)}
 
-  /* ── 섹션 ── */
-  .sec{margin-top:26px}
-  .sec-h{
-    display:flex;align-items:center;gap:7px;
-    font-size:12px;font-weight:800;letter-spacing:.04em;color:var(--ink);margin:0 4px 11px;
+  /* DM 고정 버튼 */
+  a.dm{display:flex;align-items:center;gap:12px;margin-top:16px;
+    background:linear-gradient(135deg,var(--hot),var(--rose));border-radius:16px;
+    padding:14px 16px;text-decoration:none;color:#fff;
+    box-shadow:0 8px 22px rgba(240,107,160,.38)}
+  a.dm .ic{flex:0 0 36px;height:36px;border-radius:10px;background:rgba(255,255,255,.22);
+    display:grid;place-items:center;font-size:16px}
+  a.dm b{display:block;font-size:14.5px;font-weight:800}
+  a.dm span{display:block;font-size:11.5px;color:rgba(255,255,255,.88);margin-top:2px}
+
+  /* 탭 */
+  .tabs{display:flex;gap:7px;margin:24px 0 16px}
+  .tabs button{
+    flex:1;border:1.5px solid var(--mist);background:#fff;color:var(--muted);
+    border-radius:999px;padding:9px 0;font-size:12.5px;font-weight:700;cursor:pointer;
+    font-family:inherit;transition:all .15s;
   }
+  .tabs button.on{
+    background:linear-gradient(135deg,var(--hot),var(--rose));color:#fff;border-color:transparent;
+    box-shadow:0 4px 14px rgba(240,107,160,.32);
+  }
+
+  .sec-h{display:flex;align-items:center;gap:7px;font-size:12px;font-weight:800;
+    letter-spacing:.04em;color:var(--ink);margin:26px 4px 11px}
   .sec-h .bar{flex:1;height:1px;background:linear-gradient(90deg,var(--soft),transparent)}
-  .sec-h .cnt{
-    font-size:10px;font-weight:700;color:var(--rose);
-    background:rgba(240,107,160,.12);padding:2px 7px;border-radius:999px;
-  }
+  .sec-h .cnt{font-size:10px;font-weight:700;color:var(--rose);
+    background:rgba(240,107,160,.12);padding:2px 7px;border-radius:999px}
 
-  /* ── 제품 카드 (리틀리 스토어 스타일) ── */
-  .cards{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  a.card{
+  /* 최신호 — 대형 카드 */
+  .feature{
+    background:#fff;border:1.5px solid var(--mist);border-radius:20px;overflow:hidden;
+    box-shadow:0 8px 26px rgba(92,42,68,.08);
+  }
+  .feature .cover{width:100%;aspect-ratio:4/5;object-fit:cover;display:block;background:var(--mist)}
+  .feature .body{padding:15px 16px 16px}
+
+  /* 지난 호 — 리스트 */
+  .issue{
     background:#fff;border:1.5px solid var(--mist);border-radius:16px;overflow:hidden;
-    text-decoration:none;color:var(--ink);display:flex;flex-direction:column;
-    box-shadow:0 2px 10px rgba(92,42,68,.05);transition:transform .12s,box-shadow .12s;
+    margin-bottom:10px;box-shadow:0 2px 10px rgba(92,42,68,.05);
   }
-  a.card:active{transform:scale(.98)}
-  @media(hover:hover){a.card:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(240,107,160,.2)}}
-  .card .thumb{
-    aspect-ratio:1/1;background:linear-gradient(135deg,var(--mist),#fff);
-    display:grid;place-items:center;font-size:30px;overflow:hidden;
-  }
-  .card .thumb img{width:100%;height:100%;object-fit:cover;display:block}
-  .card .info{padding:10px 11px 12px}
-  .card .brand{font-size:10px;font-weight:700;color:var(--rose);letter-spacing:.02em}
-  .card .name{
-    font-size:12.5px;font-weight:700;line-height:1.35;margin-top:3px;
-    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;
-  }
-  .card .price{font-size:12px;font-weight:800;color:var(--ink);margin-top:6px}
+  .issue .row{display:flex;gap:12px;padding:11px;align-items:center;cursor:pointer}
+  .issue .row:active{background:#FFF6FA}
+  .issue .th{flex:0 0 60px;width:60px;height:75px;border-radius:10px;object-fit:cover;
+    background:var(--mist);display:block}
 
-  /* ── 링크 버튼 ── */
-  a.btn{
-    display:flex;align-items:center;gap:13px;
-    background:#fff;border:1.5px solid var(--mist);border-radius:16px;
-    padding:15px 16px;margin-bottom:10px;text-decoration:none;color:var(--ink);
-    box-shadow:0 2px 10px rgba(92,42,68,.05);
-    transition:transform .12s,box-shadow .12s,border-color .12s;
-  }
-  a.btn:active{transform:scale(.978)}
-  @media(hover:hover){a.btn:hover{border-color:var(--soft);box-shadow:0 8px 22px rgba(240,107,160,.18);transform:translateY(-1px)}}
-  .ic{
-    flex:0 0 38px;height:38px;border-radius:11px;
-    background:linear-gradient(135deg,var(--hot),var(--rose));
-    display:grid;place-items:center;font-size:17px;color:#fff;
-  }
-  .tx{flex:1;min-width:0}
-  .tx b{display:block;font-size:14.5px;font-weight:700;letter-spacing:-.01em}
-  .tx span{display:block;font-size:11.5px;color:var(--muted);margin-top:2px;
-    overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .arw{flex:0 0 auto;color:var(--soft);font-size:17px}
+  .meta{font-size:10.5px;font-weight:700;color:var(--rose);letter-spacing:.02em}
+  .ttl{font-size:14px;font-weight:800;line-height:1.35;margin-top:3px;
+    display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .sub{font-size:11.5px;color:var(--muted);margin-top:4px}
+  .chev{margin-left:auto;color:var(--soft);font-size:15px;transition:transform .2s}
+  .open .chev{transform:rotate(90deg)}
 
-  a.dm{
-    background:linear-gradient(135deg,var(--hot),var(--rose));
-    border-color:transparent;color:#fff;box-shadow:0 8px 22px rgba(240,107,160,.38);
+  /* 상품 목록 (펼침) */
+  .prods{display:none;border-top:1.5px dashed var(--mist);padding:11px 13px 13px}
+  .open .prods{display:block}
+  a.prod{
+    display:flex;align-items:center;gap:10px;padding:9px 10px;border-radius:12px;
+    text-decoration:none;color:var(--ink);background:#FFF6FA;margin-bottom:7px;
+    border:1px solid transparent;transition:border-color .12s,transform .12s;
   }
-  a.dm .ic{background:rgba(255,255,255,.22)}
-  a.dm .tx span{color:rgba(255,255,255,.85)}
-  a.dm .arw{color:rgba(255,255,255,.8)}
+  a.prod:active{transform:scale(.985)}
+  a.prod .n{flex:0 0 20px;height:20px;border-radius:6px;background:var(--hot);color:#fff;
+    font-size:10.5px;font-weight:800;display:grid;place-items:center}
+  a.prod .pn{flex:1;font-size:12.5px;font-weight:600;line-height:1.35}
+  a.prod .go{font-size:11px;font-weight:800;color:var(--hot);white-space:nowrap}
+  .prod.dead{background:#fff;border:1px dashed var(--mist);color:#B08CA0}
+  .prod.dead .n{background:var(--mist);color:var(--muted)}
+  .prod.dead .go{color:#C9A5B6}
 
-  .empty{
-    border:1.5px dashed var(--mist);border-radius:16px;padding:15px 16px;
-    font-size:12.5px;color:#B08CA0;background:rgba(255,255,255,.5);
+  a.post{
+    display:block;text-align:center;margin-top:8px;padding:9px;border-radius:12px;
+    background:#fff;border:1.5px solid var(--mist);text-decoration:none;
+    font-size:12px;font-weight:700;color:var(--rose);
   }
 
-  footer{margin-top:32px;text-align:center;font-size:10.5px;line-height:1.7;color:#B08CA0}
-  footer .ad{
-    display:inline-block;margin-bottom:8px;padding:5px 10px;border-radius:999px;
-    background:rgba(240,107,160,.1);color:var(--rose);font-weight:700;font-size:10px;
-  }
+  .empty{border:1.5px dashed var(--mist);border-radius:16px;padding:16px;
+    font-size:12.5px;color:#B08CA0;background:rgba(255,255,255,.5);text-align:center}
+
+  footer{margin-top:34px;text-align:center;font-size:10.5px;line-height:1.7;color:#B08CA0}
+  footer .ad{display:inline-block;margin-bottom:8px;padding:5px 10px;border-radius:999px;
+    background:rgba(240,107,160,.1);color:var(--rose);font-weight:700;font-size:10px}
 </style>
 </head>
 <body>
@@ -142,6 +140,18 @@
   </header>
 
   <div id="notice"></div>
+
+  <a class="dm" href="https://ig.me/m/cherry.clubs2" target="_blank" rel="noopener">
+    <span class="ic">💌</span>
+    <span><b>찾는 아이템 있으세요?</b><span>DM 주시면 대신 골라드려요</span></span>
+  </a>
+
+  <div class="tabs" id="tabs">
+    <button data-c="all" class="on">전체</button>
+    <button data-c="fashion">👗 패션</button>
+    <button data-c="beauty">💄 뷰티</button>
+  </div>
+
   <main id="app"></main>
 
   <footer>
@@ -153,76 +163,108 @@
 </div>
 
 <script>
-// 클릭 추적 서버 (Deno) — 링크를 이 주소로 감싸면 클릭 수가 집계됩니다
 const TRACK = "https://peppy-duck-1231.navlafilm-sys.deno.net/c";
-const ICONS = { zigzag:"👗", oliveyoung:"💄", naver:"🛒", pick:"🍒", dm:"💌", link:"🔗", post:"📖" };
-
 const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const track = (id, url) => `${TRACK}?id=${encodeURIComponent(id)}&u=${encodeURIComponent(url)}`;
 
-function render(data){
-  // 소셜 아이콘
-  const soc = data.social || [];
-  document.getElementById("social").innerHTML = soc.map(s =>
-    `<a href="${esc(track('social:'+s.label, s.url))}" target="_blank" rel="noopener" title="${esc(s.label)}">${esc(s.icon)}</a>`
-  ).join("");
+let DATA = { issues: [] };
+let CAT = "all";
 
-  // 공지 배너
-  document.getElementById("notice").innerHTML = data.notice
-    ? `<div class="notice">${esc(data.notice)}</div>` : "";
-
-  let html = "";
-  (data.sections || []).forEach(sec => {
-    const items = (sec.items || []).filter(i => i.url);
-    html += `<section class="sec">
-      <div class="sec-h">
-        <span>${esc(sec.emoji||"")} ${esc(sec.title||"")}</span>
-        ${items.length ? `<i class="cnt">${items.length}</i>` : ""}
-        <i class="bar"></i>
+function prodList(iss){
+  const items = iss.items || [];
+  if (!items.length) return `<div class="empty" style="padding:12px;font-size:12px">상품 링크 준비 중이에요 🍒</div>`;
+  return items.map((p, i) => {
+    const n = String(i + 1).padStart(2, "0");
+    if (!p.url) {
+      return `<div class="prod dead">
+        <span class="n">${n}</span>
+        <span class="pn">${esc(p.name)}</span>
+        <span class="go">준비중</span>
       </div>`;
-
-    if (!items.length) {
-      html += `<div class="empty">${esc(sec.placeholder || "곧 공개돼요 🍒")}</div>`;
-    } else if (sec.layout === "card") {
-      // 제품 카드 그리드
-      html += `<div class="cards">` + items.map(i => `
-        <a class="card" href="${esc(track(sec.title+':'+i.label, i.url))}" target="_blank" rel="noopener nofollow sponsored">
-          <span class="thumb">${i.image ? `<img src="${esc(i.image)}" alt="">` : (ICONS[i.icon]||"🍒")}</span>
-          <span class="info">
-            ${i.brand ? `<span class="brand">${esc(i.brand)}</span>` : ""}
-            <span class="name">${esc(i.label)}</span>
-            ${i.price ? `<span class="price">${esc(i.price)}</span>` : ""}
-          </span>
-        </a>`).join("") + `</div>`;
-    } else {
-      // 버튼 리스트
-      html += items.map(i => `
-        <a class="btn" href="${esc(track(sec.title+':'+i.label, i.url))}" target="_blank" rel="noopener nofollow sponsored">
-          <span class="ic">${esc(ICONS[i.icon] || ICONS.link)}</span>
-          <span class="tx"><b>${esc(i.label)}</b>${i.note ? `<span>${esc(i.note)}</span>` : ""}</span>
-          <span class="arw">›</span>
-        </a>`).join("");
     }
-    html += `</section>`;
-  });
-
-  // DM 섹션 (고정)
-  html += `<section class="sec">
-    <div class="sec-h"><span>💌 원하는 아이템 찾아드려요</span><i class="bar"></i></div>
-    <a class="btn dm" href="https://ig.me/m/cherry.clubs2" target="_blank" rel="noopener">
-      <span class="ic">💌</span>
-      <span class="tx"><b>DM으로 물어보기</b><span>찾는 아이템 말씀해주시면 대신 골라드려요</span></span>
-      <span class="arw">›</span>
-    </a>
-  </section>`;
-
-  document.getElementById("app").innerHTML = html;
+    return `<a class="prod" href="${esc(track(iss.no + ":" + p.name, p.url))}" target="_blank" rel="noopener nofollow sponsored">
+      <span class="n">${n}</span>
+      <span class="pn">${esc(p.name)}</span>
+      <span class="go">보러가기 ›</span>
+    </a>`;
+  }).join("");
 }
+
+function issueCard(iss, feature){
+  const cover = iss.cover ? `<img class="${feature ? "cover" : "th"}" src="${esc(iss.cover)}" alt="">`
+                          : `<div class="${feature ? "cover" : "th"}"></div>`;
+  const cnt = (iss.items || []).length;
+  const live = (iss.items || []).filter(p => p.url).length;
+  const sub = `상품 ${cnt}${live ? " · 링크 " + live : ""} · ${esc(iss.date || "")}`;
+  const post = iss.permalink
+    ? `<a class="post" href="${esc(track(iss.no + ":post", iss.permalink))}" target="_blank" rel="noopener">📷 인스타에서 이 호 보기</a>` : "";
+
+  if (feature) {
+    return `<article class="feature" data-c="${esc(iss.cat)}">
+      ${cover}
+      <div class="body">
+        <div class="meta">${esc(iss.no)}호 · ${iss.cat === "beauty" ? "💄 뷰티" : "👗 패션"}</div>
+        <div class="ttl">${esc(iss.title)}</div>
+        <div class="sub">${sub}</div>
+      </div>
+      <div class="prods" style="display:block">
+        ${prodList(iss)}
+        ${post}
+      </div>
+    </article>`;
+  }
+  return `<article class="issue" data-c="${esc(iss.cat)}">
+    <div class="row" onclick="this.parentNode.classList.toggle('open')">
+      ${cover}
+      <div>
+        <div class="meta">${esc(iss.no)}호 · ${iss.cat === "beauty" ? "💄 뷰티" : "👗 패션"}</div>
+        <div class="ttl">${esc(iss.title)}</div>
+        <div class="sub">${sub}</div>
+      </div>
+      <span class="chev">›</span>
+    </div>
+    <div class="prods">
+      ${prodList(iss)}
+      ${post}
+    </div>
+  </article>`;
+}
+
+function render(){
+  const all = (DATA.issues || []).filter(i => CAT === "all" || i.cat === CAT);
+  const app = document.getElementById("app");
+  if (!all.length) {
+    app.innerHTML = `<div class="empty">아직 발행된 호가 없어요 🍒<br>곧 올라옵니다.</div>`;
+    return;
+  }
+  const [latest, ...rest] = all;
+  let h = `<div class="sec-h"><span>📕 최신호</span><i class="bar"></i></div>` + issueCard(latest, true);
+  if (rest.length) {
+    h += `<div class="sec-h"><span>📚 지난 호</span><i class="cnt">${rest.length}</i><i class="bar"></i></div>`;
+    h += rest.map(i => issueCard(i, false)).join("");
+  }
+  app.innerHTML = h;
+}
+
+document.getElementById("tabs").addEventListener("click", e => {
+  const b = e.target.closest("button");
+  if (!b) return;
+  document.querySelectorAll("#tabs button").forEach(x => x.classList.remove("on"));
+  b.classList.add("on");
+  CAT = b.dataset.c;
+  render();
+});
 
 fetch("links.json?v=" + Date.now())
   .then(r => r.json())
-  .then(render)
-  .catch(() => render({ sections: [{ title:"이번 주 픽", emoji:"🍒", items:[], placeholder:"곧 공개돼요 🍒" }] }));
+  .then(d => {
+    DATA = d;
+    document.getElementById("social").innerHTML = (d.social || []).map(s =>
+      `<a href="${esc(track('social:'+s.label, s.url))}" target="_blank" rel="noopener">${esc(s.icon)}</a>`).join("");
+    document.getElementById("notice").innerHTML = d.notice ? `<div class="notice">${esc(d.notice)}</div>` : "";
+    render();
+  })
+  .catch(() => render());
 </script>
 </body>
 </html>
